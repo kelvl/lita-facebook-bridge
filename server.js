@@ -2,11 +2,16 @@ var login = require('facebook-chat-api');
 var WebSocket = require('faye-websocket')
 var http = require('http');
 var Request = require('request');
+var assert = require('assert')
 
 
 var email = process.env.FB_LOGIN;
 var password = process.env.FB_PASSWORD;
 var serverPort = process.env.PORT;
+
+assert.ok(email, "Login cannot be empty")
+assert.ok(password, "Password cannot empty")
+assert.ok(serverPort, "Server port cannot be empty")
 
 var server = http.createServer();
 
